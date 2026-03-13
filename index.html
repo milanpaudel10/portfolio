@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milan Paudel | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <div class="logo">Milan Paudel</div>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#featured-work">Posts</a>
+            <a href="#about">About</a> 
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/milan-paudel-40171a384" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/milanpaudel10" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/_milanpaudel/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="description">
+                    Hi, I’m Milan. I’m currently learning web development and enjoy building simple, creative websites. I like exploring new ideas, trying different technologies, and improving my skills step by step. 
+                    Most of my focus right now is on front-end development, where I enjoy creating clean and user-friendly designs. At the same time, I’m learning more about back-end development so I can become a full-stack developer in the future.
+                </p>
+            </div>
+            <div class="hero-image">
+                <div class="circle-container">
+                    <img src="photo.jpg" alt="Milan Paudel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="projects" class="projects-section">
+    <h2>Projects and Posts</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <i class="fab fa-github"></i>
+            <h3>Laser Tag Game</h3>
+            <p>An interactive Arduino project featuring custom circuit logic and code.</p>
+            <a href="https://github.com/milanpaudel10/Laser-Tag-Game-.git" target="_blank" class="project-link">View Repo</a>
+        </div>
+
+        <div class="project-card">
+            <i class="fab fa-linkedin" style="color: #0077b5;"></i>
+            <h3>LinkedIn Post</h3>
+            <p>Sharing my latest insights on engineering and my journey in web development.</p>
+            <a href="https://www.linkedin.com/posts/milan-paudel-40171a384_excited-to-share-my-latest-project-a-diy-ugcPost-7437508807972347905-oThY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF7KasEB6e0e97qP5yM7HkG1kYN-KJW_JxM" target="_blank" class="project-link linkedin-btn">View Post</a>
+        </div>
+    </div>
+</section>
+
+    <section id="about" class="details-section">
+        <h2>About My Journey</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Technical Skills</h3>
+                <p>Focused on HTML, CSS, and JS, with a deep interest in memory management and backend logic.</p>
+            </div>
+            <div class="about-card">
+                <h3>Current Focus</h3>
+                <p>Expanding into full-stack development and experimenting with AI-driven concepts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Get In Touch</h2>
+        <form action="https://api.web3forms.com/submit" method="POST" id="form" class="contact-form">
+            <input type="hidden" name="access_key" value="68a2876a-e34a-4932-ac6f-19f8cb011b70">
+            <input type="hidden" name="subject" value="New Portfolio Message">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <input type="checkbox" name="botcheck" style="display: none;">
+            <button type="submit" class="btn">Send Message</button>
+            <div id="result"></div> 
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Milan Paudel. All rights reserved.</p>
+</footer>
+<script src="script.js"></script> 
+</body>
+</html>
