@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milan Paudel | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <div class="logo">Milan Paudel</div>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#projects">Posts</a>
+            <a href="#about">About</a> 
+            <a href="#contact">Contact</a>
+            <a href="resources.html" class="nav-resources">
+                <i class="fas fa-folder-open"></i> Resources
+            </a>
+        </nav>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/milan-paudel-40171a384" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/milanpaudel10" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/_milanpaudel/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="description">
+                    Hi, I’m Milan. I’m currently learning web development and enjoy building simple, creative websites. I like exploring new ideas, trying different technologies, and improving my skills step by step. 
+                    Most of my focus right now is on front-end development, where I enjoy creating clean and user-friendly designs. At the same time, I’m learning more about back-end development so I can become a full-stack developer in the future.
+                </p>
+            </div>
+            <div class="hero-image">
+                <div class="circle-container">
+                    <img src="Photo.jpg" alt="Milan Paudel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="projects" class="projects-section">
+    <h2>Projects and Posts</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <i class="fab fa-github"></i>
+            <h3>Laser Tag Game</h3>
+            <p>An interactive Arduino project featuring custom circuit logic and code.</p>
+            <a href="https://github.com/milanpaudel10/Laser-Tag-Game-.git" target="_blank" class="project-link">View Repo</a>
+        </div>
+        <div class="project-card">
+            <i class="fab fa-github"></i>
+            <h3>Personal Planner</h3>
+            <p>A minimalist, vanilla JS workspace for managing interactive checklists and pinned notes in one clean interface.</p>
+            <a href="https://github.com/milanpaudel10/Personal-planner" target="_blank" class="project-link">View Repo</a>
+        </div>
+
+       <div class="project-card">
+    <i class="fab fa-github"></i>
+    <h3>Expenses Tracker</h3>
+    <p>A functional web application designed to track daily expenditures, categorize spending, and visualize budget data using vanilla JavaScript.</p>
+    <a href="https://github.com/milanpaudel10/Expenses-Tracker" target="_blank" class="project-link">View Repo</a>
+</div>
+    </div>
+
+        
+    </div>
+</section>
+
+<section id="projects-section">
+ <div class="hero-wrapper">
+        <div class="big-fish-card"> <i class="fab fa-github"></i>
+            <h3>Project Big Fish</h3>
+            <p>A flagship workspace dedicated to tracking high-level milestones and continuous updates.</p>
+            
+            <div class="timer-container">
+                <p class="timer-intro">Time elapsed since Project Big Fish started:</p>
+                <div id="big-fish-timer">
+                    <div class="time-block">
+                        <span id="days">00</span>
+                        <label>Days</label>
+                    </div>
+                    <div class="time-block">
+                        <span id="hours">00</span>
+                        <label>Hours</label>
+                    </div>
+                    <div class="time-block">
+                        <span id="minutes">00</span>
+                        <label>Minutes</label>
+                    </div>
+                    <div class="time-block">
+                        <span id="seconds">00</span>
+                        <label>Seconds</label>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://github.com/milanpaudel10/Project-Big-Fish-" target="_blank" class="view-repo-btn">VIEW REPO</a>
+        </div>
+    </div>
+    </section>
+
+    <section id="about" class="details-section">
+        <h2>About My Journey</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Technical Skills</h3>
+                <p>Focused on HTML, CSS, and JS, with a deep interest in memory management and backend logic.</p>
+            </div>
+            <div class="about-card">
+                <h3>Current Focus</h3>
+                <p>Expanding into full-stack development and experimenting with AI-driven concepts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Get In Touch</h2>
+        <form action="https://api.web3forms.com/submit" method="POST" id="form" class="contact-form">
+            <input type="hidden" name="access_key" value="68a2876a-e34a-4932-ac6f-19f8cb011b70">
+            <input type="hidden" name="subject" value="New Portfolio Message">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <input type="checkbox" name="botcheck" style="display: none;">
+            <button type="submit" class="btn">Send Message</button>
+            <div id="result"></div> 
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Milan Paudel. All rights reserved.</p>
+</footer>
+<script src="script.js"></script> 
+</body>
+</html>
