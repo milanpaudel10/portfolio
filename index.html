@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Milan Paudel, Computer Engineering Student specializing in Microcontrollers, IoT, and Web Development.">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Milan Paudel | Computer Engineering Portfolio">
+    <meta property="og:description" content="Explore hardware and software projects by Milan Paudel.">
+    <meta property="og:image" content="image.jpeg">
+    <meta property="og:type" content="website">
+
+    <title>Milan Paudel | Computer Engineering Portfolio</title>
+    
+    <!-- Icons & Styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo"><i class="fa-solid fa-circle-m"></i> Milan Paudel</a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#achievements" class="nav-item">Achievements</a>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/milan-paudel-40171a384/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/milanpaudel10" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <button type="button" id="openEmailBtn" aria-label="Email"><i class="fa-solid fa-envelope"></i></button>
+                    <a href="contact.html" class="btn-nav-contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <h3>Hello, I'm</h3>
+                <h1>Milan Paudel</h1>
+<p>Driven by curiosity and a passion for technology, I am a Computer Engineering student bridging the gap between embedded devices and modern web development. My work spans low-level hardware programming with microcontrollers (Arduino, ESP32) to designing clean, user-friendly digital interfaces. I thrive on experimenting with new tools, smart systems, and full-stack concepts to turn physical hardware ideas into fully functional digital experiences.</p>                
+                <div class="hero-actions">
+                    <button type="button" id="openResumeBtn" class="btn-primary"><i class="fa-solid fa-file-lines"></i> View Resume</button>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="profile-card">
+                    <img src="image.jpeg" alt="Milan Paudel" class="profile-img" width="300" height="300">
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="sections" id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-card"><i class="devicon-c-plain colored"></i><span>C</span></div>
+                <div class="skill-card"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+                <div class="skill-card"><i class="devicon-arduino-plain colored"></i><span>Arduino / ESP</span></div>
+                <div class="skill-card"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                <div class="skill-card"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                <div class="skill-card"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                <div class="skill-card"><i class="devicon-git-plain colored"></i><span>Git & GitHub</span></div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="sections" id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Hardware Project -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-badge badge-warning">
+                            <i class="fa-solid fa-microchip"></i> Hardware & IoT
+                        </div>
+                        <h3>Laser Tag System (Arduino & ESP)</h3>
+                        <p>Designed and built an interactive microcontroller-based Laser Tag game. Upgraded from Arduino to ESP microcontrollers for lower latency, wireless communication, and real-time score tracking.</p>
+                    </div>
+                    <a href="https://github.com/milanpaudel10" target="_blank" class="project-link">
+                        View Code on GitHub <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+
+                <!-- Personal Planner -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-badge badge-live">
+                            <i class="fa-solid fa-globe"></i> Web Application
+                        </div>
+                        <h3>Personal Planner</h3>
+                        <p>An intuitive task schedule tracking and productivity web application built to manage daily targets, objectives, and calendar agendas dynamically.</p>
+                    </div>
+                    <a href="https://milanpaudel10.github.io/Personal-planner/" target="_blank" class="project-link">
+                        Launch Live App <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <!-- Expenses Tracker -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-badge badge-live">
+                            <i class="fa-solid fa-globe"></i> Web Application
+                        </div>
+                        <h3>Expenses Tracker</h3>
+                        <p>A clean dynamic balance sheet system designed to log cash flows, trace categorized expenses, and display financial metrics instantaneously.</p>
+                    </div>
+                    <a href="https://milanpaudel10.github.io/Expenses-Tracker/" target="_blank" class="project-link">
+                        Launch Live App <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="sections" id="achievements">
+            <h2 class="section-title">Achievements & Competitions</h2>
+            <div class="projects-grid">
+                <!-- Champion Card -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-badge badge-success">
+                            <i class="fa-solid fa-trophy"></i> Champion
+                        </div>
+                        <h3>HACK 4 IMPACT</h3>
+                        <p><strong>PCPS College | July 23–25, 2025</strong></p>
+                        <p>Collaborated under tight deadlines to prototype an innovative technology solution, leading the team to 1st place overall.</p>
+                    </div>
+                </div>
+
+                <!-- 2nd Runner-Up Card -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-badge badge-info">
+                            <i class="fa-solid fa-award"></i> 2nd Runner-Up
+                        </div>
+                        <h3>Beyond +2: The Cosmos Hackathon</h3>
+                        <p><strong>Cosmos College | July 4–5, 2025</strong></p>
+                        <p>Engineered a functional tech prototype under time constraints with a multidisciplinary team, placing in the top 3.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Email Modal Popup -->
+    <div id="emailModal" class="modal">
+        <div class="modal-body">
+            <button class="close-modal" id="closeEmailBtn" aria-label="Close Modal">&times;</button>
+            <h4>Contact Email Address</h4>
+            <div class="email-field">
+                <span id="emailAddress" class="email-address">milanpaudel107@gmail.com</span>
+                <button class="btn-copy" id="copyEmailBtn">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Modal Viewer -->
+    <div id="resumeModal" class="modal">
+        <div class="resume-modal-body">
+            <div class="resume-modal-header">
+                <button class="btn-back" id="closeResumeBtn">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                </button>
+                <a href="resume.png" download="Milan_Paudel_Resume.png" class="btn-download">
+                    <i class="fa-solid fa-download"></i> Download Resume
+                </a>
+            </div>
+            <div class="resume-image-container">
+                <img src="resume.png" alt="Milan Paudel Resume" class="resume-img">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Milan Paudel. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/milan-paudel-40171a384/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/milanpaudel10" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <button type="button" id="footerEmailBtn" aria-label="Email"><i class="fa-solid fa-envelope"></i></button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
