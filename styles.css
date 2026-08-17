@@ -18,7 +18,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Offset for sticky nav bar */
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -111,7 +111,6 @@ nav {
     cursor: pointer;
 }
 
-/* White Box Navbar Contact Button */
 .btn-nav-contact {
     background-color: var(--accent-white);
     color: var(--bg-color) !important;
@@ -166,10 +165,6 @@ nav {
     color: var(--text-secondary);
     margin-bottom: 2.5rem;
     max-width: 540px;
-}
-
-.hero-content p strong {
-    color: var(--text-primary);
 }
 
 .hero-actions {
@@ -339,7 +334,7 @@ nav {
     opacity: 0.7;
 }
 
-/* Modals General */
+/* Modals */
 .modal {
     display: none;
     position: fixed;
@@ -354,8 +349,7 @@ nav {
     justify-content: center;
 }
 
-.modal.active,
-.modal:target {
+.modal.active {
     display: flex !important;
 }
 
@@ -523,7 +517,7 @@ footer .social-icons button, footer .social-icons a {
     margin: 0 10px;
 }
 
-/* Mobile Responsiveness */
+/* Responsive Styles */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
