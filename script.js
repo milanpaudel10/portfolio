@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- Mobile Navigation Menu --- */
+    /* --- 1. Mobile Navigation Menu --- */
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -17,66 +17,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* --- 1. Email Modal Handling --- */
+    /* --- 2. Email Modal Handling --- */
     const emailModal = document.getElementById('emailModal');
     const openEmailBtn = document.getElementById('openEmailBtn');
     const footerEmailBtn = document.getElementById('footerEmailBtn');
     const closeEmailBtn = document.getElementById('closeEmailBtn');
     const copyEmailBtn = document.getElementById('copyEmailBtn');
     const emailAddressElement = document.getElementById('emailAddress');
-    const emailAddress = emailAddressElement ? emailAddressElement.innerText : '';
+    const emailAddress = emailAddressElement ? emailAddressElement.innerText.trim() : '';
 
-    const openEmailModal = () => emailModal && emailModal.classList.add('active');
-    const closeEmailModal = () => emailModal && emailModal.classList.remove('active');
+    const openEmailModal = () => emailModal?.classList.add('active');
+    const closeEmailModal = () => emailModal?.classList.remove('active');
 
-    if (openEmailBtn) openEmailBtn.addEventListener('click', openEmailModal);
-    if (footerEmailBtn) footerEmailBtn.addEventListener('click', openEmailModal);
-    if (closeEmailBtn) closeEmailBtn.addEventListener('click', closeEmailModal);
+    openEmailBtn?.addEventListener('click', openEmailModal);
+    footerEmailBtn?.addEventListener('click', openEmailModal);
+    closeEmailBtn?.addEventListener('click', closeEmailModal);
 
-    if (copyEmailBtn) {
+    if (copyEmailBtn && emailAddress) {
         copyEmailBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(emailAddress).then(() => {
+                const originalText = copyEmailBtn.innerText;
                 copyEmailBtn.innerText = 'Copied!';
                 setTimeout(() => {
-                    copyEmailBtn.innerText = 'Copy';
+                    copyEmailBtn.innerText = originalText;
                 }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy email: ', err);
             });
         });
     }
 
-    /* --- 2. Resume Modal Viewer Handling --- */
+    /* --- 3. Resume Modal Viewer Handling --- */
     const resumeModal = document.getElementById('resumeModal');
     const openResumeBtn = document.getElementById('openResumeBtn');
     const closeResumeBtn = document.getElementById('closeResumeBtn');
 
-    if (openResumeBtn) {
-        openResumeBtn.addEventListener('click', () => {
-            if (resumeModal) {
-                resumeModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    }
+    const openResumeModal = () => {
+        if (resumeModal) {
+            resumeModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
 
-    if (closeResumeBtn) {
-        closeResumeBtn.addEventListener('click', () => {
-            if (resumeModal) {
-                resumeModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-    }
+    const closeResumeModal = () => {
+        if (resumeModal) {
+            resumeModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    };
 
-    /* Global Modal Close on Overlay Click */
+    openResumeBtn?.addEventListener('click', openResumeModal);
+    closeResumeBtn?.addEventListener('click', closeResumeModal);
+
+    /* --- Global Modal Close (Overlay & Keyboard) --- */
     window.addEventListener('click', (e) => {
-        if (e.target === emailModal) {
+        if (e.target === emailModal) closeEmailModal();
+        if (e.target === resumeModal) closeResumeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
             closeEmailModal();
+            closeResumeModal();
         }
     });
 
-    /* --- 3. Web3Forms Contact Form Handling --- */
+    /* --- 4. Web3Forms Contact Form Handling --- */
     const contactForm = document.getElementById('contactForm');
-    
+
     const inappropriateWords = [
         'badword1', 'badword2', 'spam', 'hate', 'abuse', 
         'idiot', 'stupid', 'scam', 'fool'
@@ -97,32 +105,38 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         };
 
-        emailInput.addEventListener('input', () => {
+        emailInput?.addEventListener('input', () => {
             const pattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
-            emailError.style.display = (!pattern.test(emailInput.value) && emailInput.value !== '') ? 'block' : 'none';
+            if (emailError) {
+                emailError.style.display = (!pattern.test(emailInput.value) && emailInput.value !== '') ? 'block' : 'none';
+            }
         });
 
-        phoneInput.addEventListener('input', () => {
+        phoneInput?.addEventListener('input', () => {
             const pattern = /^(\+?\d{1,3}[- ]?)?\d{7,11}$/;
-            phoneError.style.display = (!pattern.test(phoneInput.value) && phoneInput.value !== '') ? 'block' : 'none';
+            if (phoneError) {
+                phoneError.style.display = (!pattern.test(phoneInput.value) && phoneInput.value !== '') ? 'block' : 'none';
+            }
         });
 
-        messageInput.addEventListener('input', () => {
+        messageInput?.addEventListener('input', () => {
             const containsInappropriate = checkInappropriate(messageInput.value);
-            messageError.style.display = containsInappropriate ? 'block' : 'none';
+            if (messageError) {
+                messageError.style.display = containsInappropriate ? 'block' : 'none';
+            }
         });
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const isEmailValid = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(emailInput.value);
-            const isPhoneValid = /^(\+?\d{1,3}[- ]?)?\d{7,11}$/.test(phoneInput.value);
-            const hasInappropriateWords = checkInappropriate(messageInput.value);
+            const isEmailValid = emailInput ? /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(emailInput.value) : true;
+            const isPhoneValid = phoneInput ? /^(\+?\d{1,3}[- ]?)?\d{7,11}$/.test(phoneInput.value) : true;
+            const hasInappropriateWords = messageInput ? checkInappropriate(messageInput.value) : false;
 
             if (!isEmailValid || !isPhoneValid || hasInappropriateWords) {
-                if (!isEmailValid) emailError.style.display = 'block';
-                if (!isPhoneValid) phoneError.style.display = 'block';
-                if (hasInappropriateWords) messageError.style.display = 'block';
+                if (!isEmailValid && emailError) emailError.style.display = 'block';
+                if (!isPhoneValid && phoneError) phoneError.style.display = 'block';
+                if (hasInappropriateWords && messageError) messageError.style.display = 'block';
                 return;
             }
 
