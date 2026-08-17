@@ -339,75 +339,6 @@ nav {
     opacity: 0.7;
 }
 
-/* Contact Form */
-.contact-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--card-bg);
-    padding: 3rem;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.form-control {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-family: inherit;
-    transition: border-color 0.2s ease;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: var(--text-primary);
-}
-
-textarea.form-control {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.error-message {
-    color: var(--error-color);
-    font-size: 0.85rem;
-    margin-top: 0.35rem;
-    display: none;
-}
-
-.btn-submit {
-    width: 100%;
-    background-color: var(--text-primary);
-    color: var(--bg-color);
-    border: 1px solid var(--text-primary);
-    padding: 1rem;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.btn-submit:hover {
-    background-color: transparent;
-    color: var(--text-primary);
-}
-
 /* Modals General */
 .modal {
     display: none;
@@ -423,8 +354,9 @@ textarea.form-control {
     justify-content: center;
 }
 
-.modal.active {
-    display: flex;
+.modal.active,
+.modal:target {
+    display: flex !important;
 }
 
 /* Email Modal */
@@ -557,6 +489,7 @@ textarea.form-control {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     padding: 2rem 1rem;
 }
 
@@ -566,6 +499,7 @@ textarea.form-control {
     height: auto;
     border-radius: 8px;
     border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
 }
 
 /* Footer */
@@ -643,10 +577,6 @@ footer .social-icons button, footer .social-icons a {
     .profile-img {
         width: 220px;
         height: 220px;
-    }
-
-    .contact-form-container {
-        padding: 1.5rem;
     }
 
     .resume-modal-header {
