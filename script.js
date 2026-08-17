@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Close mobile drawer when clicking internal links
         document.querySelectorAll('.nav-item').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
