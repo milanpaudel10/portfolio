@@ -18,7 +18,7 @@
             <a href="index.html" class="btn-back">
                 <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
             </a>
-            <a href="index.html" class="logo"><i class="fa-solid fa-circle-m"></i> Milan Paudel</a>
+            <a href="index.html" class="logo"><i class="fa-solid fa-code"></i> Milan Paudel</a>
         </div>
     </nav>
 
@@ -27,34 +27,36 @@
         <section class="sections">
             <h2 class="section-title">Get in Touch</h2>
             <div class="contact-form-container">
-                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" novalidate>
                     <input type="hidden" name="access_key" value="68a2876a-e34a-4932-ac6f-19f8cb011b70">
                     <!-- Prevents default web3forms redirect page when submitted via AJAX -->
                     <input type="hidden" name="redirect" value="false">
                     
                     <div class="form-group">
                         <label for="name">Name*</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <input type="text" id="name" name="name" class="form-control" autocomplete="name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email*</label>
-                        <input type="email" id="email" name="email" class="form-control" required 
-                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                        <div class="error-message" id="emailError">Please enter a valid email address.</div>
+                        <input type="email" id="email" name="email" class="form-control" autocomplete="email" required 
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                               aria-describedby="emailError">
+                        <div class="error-message" id="emailError" aria-live="polite">Please enter a valid email address.</div>
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Phone*</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" required
-                               pattern="^(\+?\d{1,3}[- ]?)?\d{7,11}$">
-                        <div class="error-message" id="phoneError">Please enter a valid phone number (7 to 11 digits).</div>
+                        <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel" required
+                               pattern="^(\+?\d{1,3}[- ]?)?\d{7,11}$"
+                               aria-describedby="phoneError">
+                        <div class="error-message" id="phoneError" aria-live="polite">Please enter a valid phone number (7 to 11 digits).</div>
                     </div>
 
                     <div class="form-group">
                         <label for="message">Message*</label>
-                        <textarea id="message" name="message" class="form-control" required></textarea>
-                        <div class="error-message" id="messageError">Inappropriate words are not permitted. Please revise.</div>
+                        <textarea id="message" name="message" class="form-control" rows="5" required aria-describedby="messageError"></textarea>
+                        <div class="error-message" id="messageError" aria-live="polite">Inappropriate words are not permitted. Please revise.</div>
                     </div>
 
                     <button type="submit" class="btn-submit">Send Message</button>
