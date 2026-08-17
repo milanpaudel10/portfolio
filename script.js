@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- 1. Mobile Navigation Menu --- */
+    /* --- 1. Mobile Navigation Toggle --- */
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -25,8 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailAddressElement = document.getElementById('emailAddress');
     const emailAddress = emailAddressElement ? emailAddressElement.innerText.trim() : '';
 
-    const openEmailModal = () => emailModal?.classList.add('active');
-    const closeEmailModal = () => emailModal?.classList.remove('active');
+    const openEmailModal = () => {
+        if (emailModal) {
+            emailModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closeEmailModal = () => {
+        if (emailModal) {
+            emailModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    };
 
     openEmailBtn?.addEventListener('click', openEmailModal);
     footerEmailBtn?.addEventListener('click', openEmailModal);
@@ -37,11 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard.writeText(emailAddress).then(() => {
                 const originalText = copyEmailBtn.innerText;
                 copyEmailBtn.innerText = 'Copied!';
+                copyEmailBtn.style.backgroundColor = 'var(--success-color)';
                 setTimeout(() => {
                     copyEmailBtn.innerText = originalText;
+                    copyEmailBtn.style.backgroundColor = 'var(--text-primary)';
                 }, 2000);
             }).catch(err => {
-                console.error('Failed to copy email: ', err);
+                console.error('Failed to copy email address: ', err);
             });
         });
     }
@@ -68,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     openResumeBtn?.addEventListener('click', openResumeModal);
     closeResumeBtn?.addEventListener('click', closeResumeModal);
 
-    /* --- Global Modal Close (Overlay & Keyboard) --- */
+    /* --- Global Modal Close (Overlay & Keydown) --- */
     window.addEventListener('click', (e) => {
         if (e.target === emailModal) closeEmailModal();
         if (e.target === resumeModal) closeResumeModal();
@@ -81,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --- 4. Web3Forms Contact Form Handling --- */
+    /* --- 4. Web3Forms Form Validation & Submission --- */
     const contactForm = document.getElementById('contactForm');
 
     const inappropriateWords = [
