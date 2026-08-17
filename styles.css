@@ -1,13 +1,15 @@
 :root {
-    --bg-color: #0a0a0a;
-    --card-bg: #121212;
-    --text-primary: #ffffff;
+    --bg-color: #09090b;
+    --card-bg: #121215;
+    --card-hover: #18181b;
+    --text-primary: #f4f4f5;
     --text-secondary: #a1a1aa;
     --border-color: #27272a;
     --accent-white: #ffffff;
     --accent-gray: #3f3f46;
     --error-color: #f87171;
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --success-color: #4ade80;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 * {
@@ -22,10 +24,11 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-primary);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
@@ -36,8 +39,9 @@ body {
 
 /* Navigation */
 nav {
-    background-color: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(12px);
+    background-color: rgba(9, 9, 11, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -88,18 +92,21 @@ nav {
     padding-left: 1.2rem;
 }
 
-.social-icons a:not(.btn-nav-contact), .social-icons button {
+.social-icons a:not(.btn-nav-contact), 
+.social-icons button {
     color: var(--text-secondary);
     font-size: 1.1rem;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
 }
 
-.social-icons a:not(.btn-nav-contact):hover, .social-icons button:hover {
+.social-icons a:not(.btn-nav-contact):hover, 
+.social-icons button:hover {
     color: var(--text-primary);
+    transform: translateY(-2px);
 }
 
 .menu-toggle {
@@ -114,8 +121,8 @@ nav {
 .btn-nav-contact {
     background-color: var(--accent-white);
     color: var(--bg-color) !important;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
+    padding: 0.45rem 1.1rem;
+    border-radius: 8px;
     font-weight: 600 !important;
     font-size: 0.85rem !important;
     text-decoration: none;
@@ -169,7 +176,7 @@ nav {
 
 .hero-actions {
     display: flex;
-    gap: 1.2rem;
+    gap: 1rem;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -195,6 +202,26 @@ nav {
     color: var(--text-primary);
 }
 
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    padding: 0.85rem 1.6rem;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-primary);
+}
+
 .hero-image-container {
     flex: 1;
     display: flex;
@@ -207,13 +234,13 @@ nav {
 }
 
 .profile-img {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    border: 4px solid var(--text-primary);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+    border: 3px solid var(--border-color);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.05);
 }
 
 /* Sections */
@@ -229,17 +256,17 @@ nav {
     letter-spacing: -0.5px;
 }
 
-/* Skills */
+/* Skills Grid */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 1.5rem;
+    gap: 1.25rem;
     text-align: center;
 }
 
 .skill-card {
     background: var(--card-bg);
-    padding: 2rem 1rem;
+    padding: 1.8rem 1rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
     transition: all 0.25s ease;
@@ -247,12 +274,13 @@ nav {
 
 .skill-card:hover {
     transform: translateY(-4px);
-    border-color: var(--text-primary);
+    background: var(--card-hover);
+    border-color: var(--text-secondary);
 }
 
 .skill-card i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
     display: block;
     color: var(--text-primary);
 }
@@ -263,16 +291,16 @@ nav {
     color: var(--text-secondary);
 }
 
-/* Projects & Achievements */
+/* Projects & Achievements Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .project-card {
     background: var(--card-bg);
-    padding: 2.2rem;
+    padding: 2rem;
     border-radius: 16px;
     border: 1px solid var(--border-color);
     display: flex;
@@ -283,7 +311,8 @@ nav {
 
 .project-card:hover {
     transform: translateY(-4px);
-    border-color: var(--text-primary);
+    background: var(--card-hover);
+    border-color: var(--text-secondary);
 }
 
 .project-badge {
@@ -301,15 +330,17 @@ nav {
     color: var(--text-primary);
 }
 
-.badge-live, .badge-warning {
-    border-color: var(--accent-gray);
-}
-
 .project-card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
     color: var(--text-primary);
     font-weight: 600;
+}
+
+.achievement-date {
+    color: var(--text-primary) !important;
+    margin-bottom: 0.5rem !important;
+    font-size: 0.9rem !important;
 }
 
 .project-card p {
@@ -344,7 +375,7 @@ nav {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     align-items: center;
     justify-content: center;
 }
@@ -363,6 +394,7 @@ nav {
     width: 90%;
     text-align: center;
     position: relative;
+    box-shadow: var(--card-shadow);
 }
 
 .modal-body h4 {
@@ -378,7 +410,7 @@ nav {
     border-radius: 8px;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     border: 1px solid var(--border-color);
 }
 
@@ -496,7 +528,7 @@ nav {
     box-shadow: var(--card-shadow);
 }
 
-/* Contact Page Styles */
+/* Contact Page Form Styles */
 .contact-section {
     padding: 4rem 0 6rem 0;
     display: flex;
@@ -607,11 +639,12 @@ footer .social-icons {
     margin-top: 1rem;
 }
 
-footer .social-icons button, footer .social-icons a {
+footer .social-icons button, 
+footer .social-icons a {
     margin: 0 10px;
 }
 
-/* Responsive Styles */
+/* Responsive Media Queries */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -665,10 +698,6 @@ footer .social-icons button, footer .social-icons a {
     .profile-img {
         width: 220px;
         height: 220px;
-    }
-
-    .resume-modal-header {
-        padding: 0.8rem 1rem;
     }
 
     .contact-card {
