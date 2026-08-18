@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- 1. Mobile Navigation Toggle --- */
+    /* --- 1. Mobile Navigation Menu --- */
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -25,19 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailAddressElement = document.getElementById('emailAddress');
     const emailAddress = emailAddressElement ? emailAddressElement.innerText.trim() : '';
 
-    const openEmailModal = () => {
-        if (emailModal) {
-            emailModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    };
-
-    const closeEmailModal = () => {
-        if (emailModal) {
-            emailModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    };
+    const openEmailModal = () => emailModal?.classList.add('active');
+    const closeEmailModal = () => emailModal?.classList.remove('active');
 
     openEmailBtn?.addEventListener('click', openEmailModal);
     footerEmailBtn?.addEventListener('click', openEmailModal);
@@ -48,13 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard.writeText(emailAddress).then(() => {
                 const originalText = copyEmailBtn.innerText;
                 copyEmailBtn.innerText = 'Copied!';
-                copyEmailBtn.style.backgroundColor = 'var(--success-color)';
                 setTimeout(() => {
                     copyEmailBtn.innerText = originalText;
-                    copyEmailBtn.style.backgroundColor = 'var(--text-primary)';
                 }, 2000);
             }).catch(err => {
-                console.error('Failed to copy email address: ', err);
+                console.error('Failed to copy email: ', err);
             });
         });
     }
@@ -81,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     openResumeBtn?.addEventListener('click', openResumeModal);
     closeResumeBtn?.addEventListener('click', closeResumeModal);
 
-    /* --- Global Modal Close (Overlay & Keydown) --- */
+    /* --- Global Modal Close (Overlay & Keyboard) --- */
     window.addEventListener('click', (e) => {
         if (e.target === emailModal) closeEmailModal();
         if (e.target === resumeModal) closeResumeModal();
@@ -94,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --- 4. Web3Forms Form Validation & Submission --- */
+    /* --- 4. Web3Forms Contact Form Handling --- */
     const contactForm = document.getElementById('contactForm');
 
     const inappropriateWords = [
@@ -117,48 +104,57 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         };
 
-        emailInput?.addEventListener('input', () => {
-            const pattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+        const validateEmail = () => {
+            const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const isValid = pattern.test(emailInput.value.trim());
             if (emailError) {
-                emailError.style.display = (!pattern.test(emailInput.value) && emailInput.value !== '') ? 'block' : 'none';
+                emailError.style.display = (!isValid && emailInput.value.trim() !== '') ? 'block' : 'none';
             }
-        });
+            return isValid;
+        };
 
-        phoneInput?.addEventListener('input', () => {
+        const validatePhone = () => {
             const pattern = /^(\+?\d{1,3}[- ]?)?\d{7,11}$/;
+            const isValid = pattern.test(phoneInput.value.trim());
             if (phoneError) {
-                phoneError.style.display = (!pattern.test(phoneInput.value) && phoneInput.value !== '') ? 'block' : 'none';
+                phoneError.style.display = (!isValid && phoneInput.value.trim() !== '') ? 'block' : 'none';
             }
-        });
+            return isValid;
+        };
 
-        messageInput?.addEventListener('input', () => {
+        const validateMessage = () => {
             const containsInappropriate = checkInappropriate(messageInput.value);
             if (messageError) {
                 messageError.style.display = containsInappropriate ? 'block' : 'none';
             }
-        });
+            return !containsInappropriate && messageInput.value.trim() !== '';
+        };
+
+        emailInput?.addEventListener('input', validateEmail);
+        phoneInput?.addEventListener('input', validatePhone);
+        messageInput?.addEventListener('input', validateMessage);
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const isEmailValid = emailInput ? /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(emailInput.value) : true;
-            const isPhoneValid = phoneInput ? /^(\+?\d{1,3}[- ]?)?\d{7,11}$/.test(phoneInput.value) : true;
-            const hasInappropriateWords = messageInput ? checkInappropriate(messageInput.value) : false;
+            const isEmailValid = validateEmail();
+            const isPhoneValid = validatePhone();
+            const isMessageValid = validateMessage();
 
-            if (!isEmailValid || !isPhoneValid || hasInappropriateWords) {
+            if (!isEmailValid || !isPhoneValid || !isMessageValid) {
                 if (!isEmailValid && emailError) emailError.style.display = 'block';
                 if (!isPhoneValid && phoneError) phoneError.style.display = 'block';
-                if (hasInappropriateWords && messageError) messageError.style.display = 'block';
+                if (!isMessageValid && messageError) messageError.style.display = 'block';
                 return;
             }
 
             const formData = new FormData(contactForm);
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn ? submitBtn.innerText : 'Send Message';
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<i class="fa-solid fa-paper-plane"></i> Send Message';
 
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.innerText = 'Sending...';
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
             }
 
             try {
@@ -181,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
+                    submitBtn.innerHTML = originalBtnHtml;
                 }
             }
         });
