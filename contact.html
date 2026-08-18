@@ -6,57 +6,58 @@
     <meta name="description" content="Contact Milan Paudel for software engineering, embedded hardware projects, and collaborations.">
     <title>Contact | Milan Paudel</title>
     
-    <!-- Icons & Styling -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navigation Bar -->
     <nav>
         <div class="container nav-container">
             <a href="index.html" class="btn-back">
-                <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+                <i class="fa-solid fa-arrow-left"></i> Portfolio
             </a>
             <a href="index.html" class="logo"><i class="fa-solid fa-code"></i> Milan Paudel</a>
         </div>
     </nav>
 
     <main class="container">
-        <!-- Contact Form Section -->
-        <section class="contact-section">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-card">
-                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+        <section class="sections contact-section">
+            <div class="contact-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="contact-subtitle">Have a project in mind or want to collaborate? Send me a message below.</p>
+            </div>
+            
+            <div class="contact-form-card">
+                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" novalidate>
                     <input type="hidden" name="access_key" value="68a2876a-e34a-4932-ac6f-19f8cb011b70">
                     <input type="hidden" name="redirect" value="false">
                     
                     <div class="form-group">
-                        <label for="name">Name*</label>
-                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email*</label>
-                        <input type="email" id="email" name="email" required 
-                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="john@example.com">
-                        <div class="error-text" id="emailError" style="display: none;">Please enter a valid email address.</div>
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+                        <div class="error-message" id="emailError">Please enter a valid email address.</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone*</label>
-                        <input type="tel" id="phone" name="phone" required
-                               pattern="^(\+?\d{1,3}[- ]?)?\d{7,11}$" placeholder="+1234567890">
-                        <div class="error-text" id="phoneError" style="display: none;">Please enter a valid phone number (7 to 11 digits).</div>
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+977 9800000000" required>
+                        <div class="error-message" id="phoneError">Please enter a valid phone number (7 to 11 digits).</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message*</label>
-                        <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
-                        <div class="error-text" id="messageError" style="display: none;">Inappropriate words are not permitted. Please revise.</div>
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Write your message here..." required></textarea>
+                        <div class="error-message" id="messageError">Inappropriate words are not permitted. Please revise.</div>
                     </div>
 
-                    <button type="submit" class="btn-submit">Send Message</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                    </button>
                 </form>
             </div>
         </section>
